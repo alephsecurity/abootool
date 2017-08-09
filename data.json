@@ -1,0 +1,49 @@
+{
+  "oem": null,
+  "device": null,
+  "ignore_re": null,
+  "oem_only": false,
+  "alphanum_only": false,
+  "use_strings_generator": false,
+  "substrings": false,
+  "strip_whitespace": true,
+  "split_space": true,
+  "remove_breaks": true,
+  "show_output": false,
+  "treat_as_blob": false,
+  "max_len": 60,
+  "oem_error_cmd": "foobarbaz123",
+  "timeout": 5000,
+  "data_path": "./data",
+  "string_prefix": "",
+  "factory_fallback_bootloader": true,
+  "log_file": "abootool.log",
+  "oems": {
+         "htc": ["volantis","volantisg","flounder","flounder_lte","marlin","sailfish"],
+         "motorola": ["shamu", "athene_13mp", "harpia", "cedric", "thea","potter","osprey"],
+         "huawei": ["angler"],
+         "lg": ["bullhead", "hammerhead", "occam", "lgh850"],
+         "google": ["ryu", "tungsten"],
+         "asus": ["fugu","razor","razorg","nakasi", "nakasig", "grouper", "flo", "deb"],
+         "oneplus": ["bacon", "oneplus2", "oneplus3", "oneplus3t", "oneplus5"],
+         "sony": ["f5121"],
+         "samsung": ["mantaray", "mysid", "mysidspr", "yakju", "takju", "soju", "sojua", "sojuk", "sojus"],
+         "xiaomi": ["gemini", "capicorn", "nikel", "kenzo", "hennessy", "lithium"]
+  },
+  "bootloader_names": {
+        "smaug": "ryu",
+        "volantis": "flounder",
+        "volantisg": "flounderg",
+        "grouper": "nakasi",
+        "15811": "oneplus3t",
+        "15801": "oneplus3",
+        "athene_13mp": "athene"
+  },
+
+
+  "ota_prevalent_aboot_paths": ["bootloader.aboot.img", "firmware-update/emmc_appsboot.mbn", "uboot.img", "firmware-update/lk.bin"],
+  "ota_umkbootimg_path": "umkbootimg",
+  "ota_unpack_ramdisk_path": "unpack_ramdisk",
+  "adb_path": "adb",
+  "adb_key_path": "~/.android/adbkey"
+}
