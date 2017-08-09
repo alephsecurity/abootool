@@ -23,8 +23,8 @@ Explanation of progress bar:
   |             |      |    |   |    |   |        |         |
   |             |      |    |   |    |   |        |         `-> Last non-neg CMD
   |             |      |    |   |    |   |        `-----------> Last CMD
-  |             |      |    |   |    |   `--------------------> # of USB error CMDs 
-  |             |      |    |   |    `------------------------> # of timeout CMDs
+  |             |      |    |   |    |   `--------------------> # of CMDs that caused USB errors
+  |             |      |    |   |    `------------------------> # of CMDs that caused timeouts
   |             |      |    |   `-----------------------------> # of restricted CMDs
   |             |      |    `---------------------------------> # of positive CMDs
   |             |      `--------------------------------------> Total # of CMDs
