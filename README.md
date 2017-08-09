@@ -23,8 +23,8 @@ Explanation of progress bar:
   |             |      |    |   |    |   |        |         |
   |             |      |    |   |    |   |        |         `-> Last non-neg CMD
   |             |      |    |   |    |   |        `-----------> Last CMD
-  |             |      |    |   |    |   `--------------------> # of USB error CMDs 
-  |             |      |    |   |    `------------------------> # of timeout CMDs
+  |             |      |    |   |    |   `--------------------> # of CMDs that caused USB errors
+  |             |      |    |   |    `------------------------> # of CMDs that caused timeouts
   |             |      |    |   `-----------------------------> # of restricted CMDs
   |             |      |    `---------------------------------> # of positive CMDs
   |             |      `--------------------------------------> Total # of CMDs
@@ -60,36 +60,36 @@ TBA
 
 Running on Nexus 6P `angler`:
 ```terminal
-$ ./abootool.py 
+./abootool.py 
 INFO: Welcome to abootool by Aleph Research, HCL technologies
-INFO: fastboot connected to EN?????????
+INFO: fastboot connected to ENU?????
 INFO: Device reported name = angler
 INFO: Loading strings...
-INFO: Loaded 54687 strings from 31 ABOOTs
-[##########] [054687/054687/+15/R05/T00/E00] [CMD:      {@=] [LAST: uart dis]
+INFO: Loaded 18174 strings from 3 ABOOTs
+[##########] [018174/018174/+13/R07/T00/E00] [CMD:      zzO] [LAST: uart dis]
 INFO: Done.
-INFO: Found 15 OEM commands
+INFO: Found 13 Positive OEM commands
 INFO:  1. device-info
 INFO:  2. disable-charger-screen
-INFO:  3. enable reduced-version
-INFO:  4. enable-charger-screen
-INFO:  5. frp-erase
-INFO:  6. frp-unlock
-INFO:  7. get-bsn
-INFO:  8. get-imei1
-INFO:  9. get-meid
-INFO: 10. get-sn
-INFO: 11. get_verify_boot_status
-INFO: 12. hwdog certify begin
-INFO: 13. off-mode-charge disable
-INFO: 14. select-display-panel
-INFO: 15. uart disable
-INFO: Found 5 Restricted OEM commands
+INFO:  3. enable-charger-screen
+INFO:  4. frp-unlock
+INFO:  5. get-bsn
+INFO:  6. get-imei1
+INFO:  7. get-meid
+INFO:  8. get-sn
+INFO:  9. get_verify_boot_status
+INFO: 10. hwdog certify begin
+INFO: 11. off-mode-charge disable
+INFO: 12. select-display-panel
+INFO: 13. uart disable
+INFO: Found 7 Restricted OEM commands
 INFO:  1. disable-bp-tools
 INFO:  2. disable-hw-factory
-INFO:  3. enable-bp-tools
-INFO:  4. enable-hw-factory
-INFO:  5. ramdump disable
+INFO:  3. enable reduced-version
+INFO:  4. enable-bp-tools
+INFO:  5. enable-hw-factory
+INFO:  6. frp-erase
+INFO:  7. ramdump disable
 INFO: Found 0 USB Error OEM commands
 INFO: Found 0 Timed-out OEM commands
 ````
