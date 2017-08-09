@@ -275,7 +275,7 @@ class CommandFilter:
             T("Ignoring %s (%d > %d)", s, len(s), Config.max_len)
             return False
 
-        if Config.alphanum_only and not re.match("^[0-9a-zA-Z_-]+$", s):
+        if Config.alphanum_only and not re.match("^([0-9a-zA-Z_-]|\s)+$", s):
             T("Ignoring %s (not alphanum)" % s)
             return False
 
