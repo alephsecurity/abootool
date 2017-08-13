@@ -7,6 +7,7 @@ Simple fuzzer for discovering hidden fastboot gems.
 
 Appears in the USENIX WOOT '17 paper: [fastboot oem vuln: Android Bootloader Vulnerabilities in Vendor Customizations (USENIX WOOT `17)](https://www.usenix.org/conference/woot17/workshop-program/presentation/hay)
 
+![abootool](https://alephsecurity.com/assets/img/abootool.gif)
 
 ## Usage ##
 1. Download your favourite OTAs/Factory images and populate with `abootool.py -a <dir>`.
