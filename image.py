@@ -258,7 +258,7 @@ class OTA(ImageArchive):
             try:
                 subprocess.check_output([Config.ota_umkbootimg_path, "droidboot.img"], stderr=subprocess.STDOUT)
                 subprocess.check_output([Config.ota_unpack_ramdisk_path, "initramfs.cpio.gz"],stderr=subprocess.STDOUT)
-            except OSError, e:
+            except OSError as e:
                 E("Cannot execute umkbootimg/unpack_ramdisk while handling %s. " % self.path)
                 E("ota_umkbootimg_path = %s" % Config.ota_umkbootimg_path)
                 E("ota_unpack_ramdisk_path = %s" % Config.ota_unpack_ramdisk_path)
