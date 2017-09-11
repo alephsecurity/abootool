@@ -85,7 +85,7 @@ class Device:
                 try:
                     usbdev.Open()
                     I("fastboot connected to %s", usbdev.serial_number)
-                except usb1.USBError, e:
+                except usb1.USBError as e:
                     usbdev.Close()
                     time.sleep(5)
                     continue
@@ -101,7 +101,7 @@ class Device:
                     I("adb: connected")
                     self.set_state(State.CONNECTED_ADB_DEVICE)
 
-                except usb1.USBErrorBusy, e:
+                except usb1.USBErrorBusy as e:
                     self.set_state(self.adb_get_state())
                     if State.CONNECTED_ADB_DEVICE == self.state:
                         I("adb: connected")
@@ -157,17 +157,17 @@ class Device:
             getattr(self.fastboot(), func)(info_cb=self.last_output, *args, **kargs)
             return self.last_output.get()
 
-        except fastboot.FastbootRemoteFailure, e:
+        except fastboot.FastbootRemoteFailure as e:
             r = self.get_last_fb_output()
             msg = e.args[1]
             raise FastbootRemoteFailure(msg)
 
-        except fastboot.FastbootStateMismatch, e:
+        except fastboot.FastbootStateMismatch as e:
             W("fastboot state mistmatch")
             self.disconnect()
             raise FastbootUSBException("")
 
-        except usb_exceptions.LibusbWrappingError, e:
+        except usb_exceptions.LibusbWrappingError as e:
             if "LIBUSB_ERROR_TIMEOUT" in str(e.usb_error):
                 if allow_timeout:
                     D("Allowed timeout during FB command: %s, args = %s, kargs = %s", func, str(*args), str(**kargs))
@@ -187,7 +187,7 @@ class Device:
             try:
                 self.resolve_fb_error()
                 return self.do_fb_command(func, allow_timeout, *args, **kargs)
-            except FastbootUSBException, e:
+            except FastbootUSBException as e:
                 if allow_usb_error:
                     raise e
                 W("USB Error (%s) detected during command: %s, args = %s, kargs = %s", e.msg, func, str(*args),
@@ -301,9 +301,9 @@ class Device:
 
         try:
             self.fb_error = self.do_fb_command("Oem", True, Config.oem_error_cmd)
-        except FastbootRemoteFailure, e:
+        except FastbootRemoteFailure as e:
             self.fb_error = e.msg + self.get_last_fb_output()
-        except FastbootTimeoutException, e:
+        except FastbootTimeoutException as e:
             D("Error is indicated by USB timeout")
             self.fb_error_timeout = True
             return

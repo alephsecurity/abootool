@@ -12,9 +12,9 @@ Appears in the USENIX WOOT '17 paper: [fastboot oem vuln: Android Bootloader Vul
 ## Usage ##
 1. Download your favourite OTAs/Factory images and populate with `abootool.py -a <dir>`.
 `abootool.py -l` will then show you the populated images. 
-2. Hook your device to the nearest USB port and run `abootool.py`. It will try to automatically discover the product or OEM. If it fails, it will fuzz with all of the available strings. 
+2. Hook your device to the nearest USB port and run `abootool.py`. It will try to automatically discover the product or OEM. If it fails, it will fuzz the device with all of the available strings. 
 One can force a specific OEM using `-e <oem>` parameter. 
-At the end, the tool will print the discovered commands, discovered restricted commands, and commands which timed-out.
+When it finishes, the tool prints the discovered positive commands (including ones whose response is a fastboot failure), discovered restricted commands, commands which timed-out, and commands which have triggered various errors.
 
 See `abootool.cfg` and `abootool.py -h` for advanced usage.
 

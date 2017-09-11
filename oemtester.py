@@ -163,7 +163,7 @@ class OEMTester:
                     r = self.device.oem(s, not timeout, not usb_error)
                     timeout, usb_error = (False, False)
 
-                except FastbootRemoteFailure, e:
+                except FastbootRemoteFailure as e:
                     r = self.device.get_last_fb_output()
                     msg = e.msg
                     failed = True
@@ -209,7 +209,7 @@ class OEMTester:
                     D("(%s) fastboot oem %s", status, s)
                     D("Result =\n"+r)
 
-            except FastbootFatalError, e:
+            except FastbootFatalError as e:
                 E("Failed with index=%d, string=\"%s\", prev=\"%s\". Consider adding them to the filter.", i, s, prev)
                 break
 
