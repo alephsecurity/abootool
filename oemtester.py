@@ -183,7 +183,7 @@ class OEMTester:
                 if failed:
                     status = '-'
                     o = Device.normalize_fb_error(msg+r)
-                    if "lock" in o or "restricted" in o or "support" in o or "not allowed" in o:
+                    if "lock" in o or "restricted" in o or "support" in o or "not allowed" in o or "permission denied" in o:
                         if Config.show_output:
                             I("(R) fastboot oem %s", s)
 
