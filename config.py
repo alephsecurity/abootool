@@ -52,19 +52,19 @@ class Config(Serializable):
             for k in parser.options("root"):
                 try:
                     cfg[k] = parser.getboolean("root", k)
-                    continue;
+                    continue
                 except ValueError:
                     pass
 
                 try:
                     cfg[k] = parser.getint("root", k)
-                    continue;
+                    continue
                 except ValueError:
                     pass
 
                 try:
                     cfg[k] = parser.getfloat("root", k)
-                    continue;
+                    continue
                 except ValueError:
                     pass
 
