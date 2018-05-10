@@ -72,7 +72,8 @@ def all():
 class ABOOT(Serializable):
     @classmethod
     def create_from_json(cls, path):
-        data = json.load(file(path, "rb"))
+        with open(path, "rb") as fh:
+            data = json.load(fh)
         return ABOOT().set_data(data)
 
     @classmethod
