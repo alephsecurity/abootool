@@ -28,7 +28,10 @@ def add(path):
         for root,dirs,files in os.walk(path):
             for f in files:
                 T(f)
-                add_image(os.path.join(root, f))
+                if add_image(os.path.join(root, f)):
+                    print("Added: {}".format(f))
+                else:
+                    print("Skipped: {}".format(f))
 
 
 def add_image(path):
@@ -78,7 +81,7 @@ def add_aboot(archive):
     if bl.save('%s/%s-%s-%s.json' % (Config.data_path, bl.oem, bl.device, bl.build)):
         skipped = ""
 
-    I("%s (%d) %s" % (bl, len(bl.strings), skipped))
+    I("%s (%d) %s SAVING" % (bl, len(bl.strings), skipped))
     return bl
 
 

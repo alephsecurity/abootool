@@ -41,9 +41,11 @@ class Config(Serializable):
         global config
         if not config:
             config = Config()
-            config.set_data(json.load(file(DATA_PATH, "rb")))
+            with open(DATA_PATH, "rb") as fh:
+                config.set_data(json.load(fh))
 
-            data = "[root]\n"+file(USER_CONFIG_PATH, "rb").read()
+            with open(USER_CONFIG_PATH, "rb") as fh:
+                data = "[root]\n"+fh.read()
             fp = io.BytesIO(data)
             parser = ConfigParser.RawConfigParser()
             parser.readfp(fp)
@@ -52,19 +54,19 @@ class Config(Serializable):
             for k in parser.options("root"):
                 try:
                     cfg[k] = parser.getboolean("root", k)
-                    continue;
+                    continue
                 except ValueError:
                     pass
 
                 try:
                     cfg[k] = parser.getint("root", k)
-                    continue;
+                    continue
                 except ValueError:
                     pass
 
                 try:
                     cfg[k] = parser.getfloat("root", k)
-                    continue;
+                    continue
                 except ValueError:
                     pass
 

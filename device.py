@@ -5,7 +5,7 @@ Author: Roee Hay / Aleph Research / HCL Technologies
 import os
 import re
 from serializable import Serializable
-from adb import fastboot,common,usb_exceptions,adb_commands, sign_m2crypto
+from adb import fastboot,common,usb_exceptions,adb_commands, sign_pycryptodome
 from log import *
 from config import Config
 from enum import Enum
@@ -132,11 +132,19 @@ class Device:
                 self.wait_for_device()
 
     def adb(self):
-        signer = sign_m2crypto.M2CryptoSigner(os.path.expanduser(Config.adb_key_path))
-        return adb_commands.AdbCommands.Connect(self.usbdev, rsa_keys=[signer])
+        signer = sign_pycryptodome.PycryptodomeAuthSigner(os.path.expanduser(Config.adb_key_path))
+        device = adb_commands.AdbCommands()
+        return device.ConnectDevice(rsa_keys=[signer])
 
     def fastboot(self):
-        return fastboot.FastbootCommands(self.usbdev)
+        cmds = fastboot.FastbootCommands()
+        while True:
+            try:
+                dev = cmds.ConnectDevice()
+                return dev
+            except:
+                print("Device offline, go back to bootloader!")
+                time.sleep(3)
 
     def serial_number(self):
         self.wait_for_device()
@@ -222,7 +230,7 @@ class Device:
                 raise FastbootCommandNotFound()
             raise FastbootTimeoutException
 
-        except FastbootRemoteFailure, e:
+        except FastbootRemoteFailure as e:
             r = self.get_last_fb_output()
             error = e.msg
             if self.is_fb_error(error+r, cmd):
