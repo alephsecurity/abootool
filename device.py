@@ -136,7 +136,14 @@ class Device:
         return adb_commands.AdbCommands.Connect(self.usbdev, rsa_keys=[signer])
 
     def fastboot(self):
-        return fastboot.FastbootCommands(self.usbdev)
+        cmds = fastboot.FastbootCommands()
+        while True:
+            try:
+                dev = cmds.ConnectDevice()
+                return dev
+            except:
+                print("Device offline, go back to bootloader!")
+                time.sleep(3)
 
     def serial_number(self):
         self.wait_for_device()
@@ -159,7 +166,7 @@ class Device:
 
         except fastboot.FastbootRemoteFailure as e:
             r = self.get_last_fb_output()
-            msg = e.args[1]
+            msg = str(e.args[1])
             raise FastbootRemoteFailure(msg)
 
         except fastboot.FastbootStateMismatch as e:
@@ -222,7 +229,7 @@ class Device:
                 raise FastbootCommandNotFound()
             raise FastbootTimeoutException
 
-        except FastbootRemoteFailure, e:
+        except FastbootRemoteFailure as e:
             r = self.get_last_fb_output()
             error = e.msg
             if self.is_fb_error(error+r, cmd):
@@ -302,7 +309,7 @@ class Device:
         try:
             self.fb_error = self.do_fb_command("Oem", True, Config.oem_error_cmd)
         except FastbootRemoteFailure as e:
-            self.fb_error = e.msg + self.get_last_fb_output()
+            self.fb_error = str(e.msg) + self.get_last_fb_output()
         except FastbootTimeoutException as e:
             D("Error is indicated by USB timeout")
             self.fb_error_timeout = True
@@ -362,7 +369,7 @@ class CmdLogger:
         self.output.append(fbmsg.message)
 
     def get(self):
-        return "\n".join(self.output)
+        return self.output[0].decode("utf-8")
 
 class State(Enum):
     DISCONNECTED = 0,

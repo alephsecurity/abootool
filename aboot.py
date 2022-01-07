@@ -26,10 +26,10 @@ def get_bootloaders(path=Config.data_path):
         if f.endswith(".json"):
             bl = ABOOT.create_from_json(os.path.join(path, f))
             bootloaders.append(bl)
-            if not bootloaders_by_oem.has_key(bl.oem):
+            if bl.oem not in bootloaders_by_oem:
                 bootloaders_by_oem[bl.oem] = []
             bootloaders_by_oem[bl.oem].append(bl)
-            if not bootloaders_by_device.has_key(bl.device):
+            if bl.device not in bootloaders_by_device:
                 bootloaders_by_device[bl.device] = []
             bootloaders_by_device[bl.device].append(bl)
             n+=1
@@ -72,7 +72,7 @@ def all():
 class ABOOT(Serializable):
     @classmethod
     def create_from_json(cls, path):
-        data = json.load(file(path, "rb"))
+        data = json.load(open(path, "rb"))
         return ABOOT().set_data(data)
 
     @classmethod
