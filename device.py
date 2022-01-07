@@ -166,7 +166,7 @@ class Device:
 
         except fastboot.FastbootRemoteFailure as e:
             r = self.get_last_fb_output()
-            msg = e.args[1]
+            msg = str(e.args[1])
             raise FastbootRemoteFailure(msg)
 
         except fastboot.FastbootStateMismatch as e:
@@ -369,7 +369,7 @@ class CmdLogger:
         self.output.append(fbmsg.message)
 
     def get(self):
-        return "".join(str(self.output))
+        return self.output[0].decode("utf-8")
 
 class State(Enum):
     DISCONNECTED = 0,

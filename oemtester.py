@@ -59,7 +59,6 @@ class OEMTester:
             return aboot.all()
 
         bootloaders = aboot.by_device(device.device())
-
         if len(bootloaders) == 0:
             I("Cannot find bootloader images for %s, trying to resolve its OEM", device.device())
             try:
