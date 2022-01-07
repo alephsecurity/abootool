@@ -85,7 +85,7 @@ class OEMTester:
 
         I("Loading strings...")
         strings = []
-        map(lambda x: strings.append(x), OEMTester.gen_strings(bootloaders))
+        list(map(lambda x: strings.append(x), OEMTester.gen_strings(bootloaders)))
         I("Loaded %d strings from %d ABOOTs", len(strings), len(bootloaders))
         return strings
 
@@ -129,8 +129,8 @@ class OEMTester:
     @staticmethod
     def get_substrings(s):
         out = set()
-        for i in xrange(len(s)):
-            for j in xrange(len(s)-i):
+        for i in range(len(s)):
+            for j in range(len(s)-i):
                 out.add(s[j:j+i+1])
         return out
 

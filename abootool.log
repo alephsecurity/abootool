@@ -1,0 +1,69 @@
+2022-01-07 19:51:57,145  INFO: Welcome to abootool by Aleph Research, HCL technologies
+2022-01-07 19:51:57,155  INFO: fastboot connected to 4c35155b
+2022-01-07 19:56:38,548  INFO: Welcome to abootool by Aleph Research, HCL technologies
+2022-01-07 19:56:38,558  INFO: fastboot connected to 4c35155b
+2022-01-07 19:58:26,120  INFO: Welcome to abootool by Aleph Research, HCL technologies
+2022-01-07 19:58:26,130  INFO: fastboot connected to 4c35155b
+2022-01-07 19:59:17,728  INFO: Welcome to abootool by Aleph Research, HCL technologies
+2022-01-07 19:59:17,738  INFO: fastboot connected to 4c35155b
+2022-01-07 19:59:17,767 DEBUG: Error str: b'unknown command'[b'unknown command']
+2022-01-07 19:59:17,798  INFO: Device reported name = [
+b
+'
+m
+s
+m
+8
+9
+9
+6
+'
+]
+2022-01-07 19:59:17,798 DEBUG: loaded 0 bootloaders (0 devices, 0 OEMs)
+2022-01-07 19:59:17,798  INFO: Cannot find bootloader images for [
+b
+'
+m
+s
+m
+8
+9
+9
+6
+'
+], trying to resolve its OEM
+2022-01-07 19:59:17,798  INFO: Cannot resolve oem of [
+b
+'
+m
+s
+m
+8
+9
+9
+6
+'
+], considering all ABOOTs
+2022-01-07 19:59:17,798 DEBUG: loaded 0 bootloaders (0 devices, 0 OEMs)
+2022-01-07 19:59:17,798  INFO: Loading strings...
+2022-01-07 19:59:17,798  INFO: Loaded 0 strings from 0 ABOOTs
+2022-01-07 19:59:17,798  INFO: Done.
+2022-01-07 19:59:17,798  INFO: Found 0 Positive OEM commands
+2022-01-07 19:59:17,798  INFO: Found 0 Restricted OEM commands
+2022-01-07 19:59:17,798  INFO: Found 0 USB Error OEM commands
+2022-01-07 19:59:17,799  INFO: Found 0 Timed-out OEM commands
+2022-01-07 20:00:04,497  INFO: Welcome to abootool by Aleph Research, HCL technologies
+2022-01-07 20:00:04,507  INFO: fastboot connected to 4c35155b
+2022-01-07 20:00:04,534 DEBUG: Error str: b'unknown command'[b'unknown command']
+2022-01-07 20:00:04,554  INFO: Device reported name = [b'msm8996']
+2022-01-07 20:00:04,554 DEBUG: loaded 0 bootloaders (0 devices, 0 OEMs)
+2022-01-07 20:00:04,554  INFO: Cannot find bootloader images for [b'msm8996'], trying to resolve its OEM
+2022-01-07 20:00:04,554  INFO: Cannot resolve oem of [b'msm8996'], considering all ABOOTs
+2022-01-07 20:00:04,554 DEBUG: loaded 0 bootloaders (0 devices, 0 OEMs)
+2022-01-07 20:00:04,554  INFO: Loading strings...
+2022-01-07 20:00:04,554  INFO: Loaded 0 strings from 0 ABOOTs
+2022-01-07 20:00:04,554  INFO: Done.
+2022-01-07 20:00:04,554  INFO: Found 0 Positive OEM commands
+2022-01-07 20:00:04,554  INFO: Found 0 Restricted OEM commands
+2022-01-07 20:00:04,555  INFO: Found 0 USB Error OEM commands
+2022-01-07 20:00:04,555  INFO: Found 0 Timed-out OEM commands

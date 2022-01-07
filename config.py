@@ -4,7 +4,7 @@ Author: Roee Hay / Aleph Research / HCL Technologies
 
 from serializable import *
 import json
-import ConfigParser
+import configparser
 DATA_PATH = "./data.json"
 USER_CONFIG_PATH = "./abootool.cfg"
 import io
@@ -23,9 +23,7 @@ class MetaConfig(type):
         return cls.get_config().__repr__()
 
 
-class Config(Serializable):
-    __metaclass__ = MetaConfig
-
+class Config(Serializable, metaclass=MetaConfig):
     config = None
 
     @classmethod
@@ -41,12 +39,11 @@ class Config(Serializable):
         global config
         if not config:
             config = Config()
-            config.set_data(json.load(file(DATA_PATH, "rb")))
+            config.set_data(json.load(open(DATA_PATH, "r")))
 
-            data = "[root]\n"+file(USER_CONFIG_PATH, "rb").read()
-            fp = io.BytesIO(data)
-            parser = ConfigParser.RawConfigParser()
-            parser.readfp(fp)
+            data = "[root]\n"+open(USER_CONFIG_PATH, "r").read()
+            parser = configparser.ConfigParser()
+            parser.read_string(data)
 
             cfg = {}
             for k in parser.options("root"):
